@@ -1,5 +1,5 @@
-import 'package:flutte_simple_blog/src/pages/blog.page.dart';
-import 'package:flutte_simple_blog/src/pages/home.page.dart';
+import 'package:flutter_simple_blog/src/pages/blog.page.dart';
+import 'package:flutter_simple_blog/src/pages/home.page.dart';
 import 'package:flutter/material.dart';
 
 class Router {

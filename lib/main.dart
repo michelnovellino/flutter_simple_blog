@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutte_simple_blog/src/router/router.dart';
+import 'package:flutter_simple_blog/src/router/router.dart';
 
 void main() => runApp(Run());
 const String homeRoute = '/';
