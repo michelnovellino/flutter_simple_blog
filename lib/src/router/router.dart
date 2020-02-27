@@ -1,15 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_simple_blog/src/pages/blog.page.dart';
 import 'package:flutter_simple_blog/src/pages/home.page.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_simple_blog/src/pages/test.page.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomePage());
       case '/blog':
         return MaterialPageRoute(builder: (_) => BlogPage());
+      case '/test':
+        return MaterialPageRoute(builder: (_) => TestPage());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
