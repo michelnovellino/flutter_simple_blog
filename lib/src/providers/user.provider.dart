@@ -1,38 +1,39 @@
 import 'dart:convert';
 import 'package:flutter_simple_blog/src/models/user.model.dart';
 import 'package:http/http.dart' as http;
-/* <List<UserModel>> 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-0{ean[1]}_001_c.jpg
-0{ean[1]}_002_c.jpg
-0{ean[1]}_003_c.jpg
-0{ean[1]}_004_c.jpg
-*/
+final Function _env = () async {
+  await DotEnv().load('.env');
+  return DotEnv().env["API_URL"];
+};
 
 class UserProvider {
+
+
   Future<List<UserModel>> getAll() async {
-    var r = await http.get("https://jsonplaceholder.typicode.com/users/");
-    final decoded = json.decode(r.body);
-    final _list = new UsersModel.fromJsonList(decoded);
-    print(_list);
-    
+    var _url = await _env();
+    var r = await http.get("$_url/users");
+    print("is dot! $_url");
+    final Map<String, dynamic> decoded = json.decode(r.body);
+    final _data = decoded["data"];
+    final _list = new UsersModel.fromJsonList(_data);
+/*     print('decoded data ${_data.runtimeType}');
+    print('decoded data2 ${_list.items}'); */
     return _list.items;
   }
-/*     Future<List<ProductModel>> getAll() async {
-    final url = '$baseUrl/products.json';
-    final result = await http.get(url);
-    final Map<String, dynamic> decoded = json.decode(result.body);
-    print('decoded data $decoded');
-    final List<ProductModel> products = new List();
-    if (decoded == null) return [];
 
-    decoded.forEach((id, el) {
-      final temp = ProductModel.fromJson(el);
-      temp.id = id;
+  void getOne(id) async {
+    var _url = await _env();
+    var r = await http.get("$_url/users/$id");
+    print("is dot! $_url");
+    final Map<String, dynamic> decoded = json.decode(r.body);
+        print('decoded data1 $decoded');
+    final _data = decoded["data"];
+    final _user = new UserModel.fromJson(_data);
+/*     print('decoded data ${_data.runtimeType}');
+    print('decoded data2 ${_user}'); */
+    print('decoded data2 ${_user.email}');
 
-      products.add(temp);
-    });
-
-    return products;
-  } */
+  }
 }

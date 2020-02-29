@@ -25,7 +25,7 @@ class _TestPageState extends State<TestPage> {
 
   @override
   Widget build(BuildContext context) {
-    _user.getAll();
+    _user.getOne(4);
     return Scaffold(
       appBar: AppBar(
         title: Text("Test Page"),
@@ -71,7 +71,7 @@ class _TestPageState extends State<TestPage> {
         child: Column(
           children: <Widget>[
             ListTile(
-              title: Text(item.name),
+              title: Text(item.firstName),
               subtitle: Text(item.email),
               onTap: () {
                 /*      Navigator.of(context).pushNamed('item', arguments: item); */

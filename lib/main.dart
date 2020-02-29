@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_simple_blog/src/router/router.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() => runApp(Run());
+Future main() async {
+  await DotEnv().load('.env');
+  runApp(Run());
+}
+
 const String homeRoute = '/';
 const String blogRoute = '/blog';
 
