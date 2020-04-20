@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pushNamed("/test");
+          Navigator.of(context).pushNamed("/blog");
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),
